@@ -8,8 +8,16 @@ public class FileIO {
         try (FileWriter writer = new FileWriter(filename)) {
             writer.write(content);
         }
+        
     }
     public static String readFile(String filename) throws IOException {
         return new String(Files.readAllBytes(Paths.get(filename)));
     }
+
+    public static void appendToFile(String filename, String content) throws IOException {
+        try (FileWriter writer = new FileWriter(filename, true)) {
+            writer.write(content);
+        }
+    }
+    
 }
